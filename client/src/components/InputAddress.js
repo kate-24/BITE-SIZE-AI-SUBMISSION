@@ -30,8 +30,10 @@ const InputAddress = () => {
         const placesAutocomplete = new window.google.maps.places.Autocomplete(document.getElementById("search-bar"));
 
         placesAutocomplete.addListener("place_changed", () => {
+            console.log("place_changed event triggered");
             const place = placesAutocomplete.getPlace();
             const placeId = place.place_id; // Get the place ID
+            console.log("Place ID: ", placeId);
 
             // Use the Place Details service to get more information
             const request = {
@@ -42,6 +44,7 @@ const InputAddress = () => {
             const service = new window.google.maps.places.PlacesService(document.createElement("div"));
             service.getDetails(request, async (placeDetails, status) => {
                 if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+                    console.log("Place details fetched successfully: ", placeDetails);
                     setPlaceDetails(placeDetails);
                     setAddress(placeDetails.name); // Set the address to place name
                     await onSubmitForm(placeDetails); // Submit the form with the place details
@@ -53,8 +56,14 @@ const InputAddress = () => {
     };
 
     const onSubmitForm = async (placeDetails) => {
+        console.log("onSubmitForm called with placeDetails: ", placeDetails);
         try {
-            const body = { address: placeDetails.name, summary: placeDetails.reviews.map(review => review.text).join('\n') };
+            const summary = placeDetails.reviews.map((review) => review.text).join("\n");
+            console.log(`place details: ${summary}`);
+            const body = {
+                address: placeDetails.name,
+                summary: summary,
+            };
             const response = await fetch(`${process.env.REACT_APP_API_URL}/bites`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -63,9 +72,9 @@ const InputAddress = () => {
             console.log(`env var : ${process.env.REACT_APP_API_URL}`);
             console.log(response);
             setShowSummary(true); // Show summary after successful search
-            setKey(prevKey => prevKey + 1); // Update key to force remount or update ShowSummary
+            setKey((prevKey) => prevKey + 1); // Update key to force remount or update ShowSummary
         } catch (err) {
-            console.error(err.message);
+            console.error("Error in onSubmitForm:", err.message);
         }
     };
 
