@@ -64,12 +64,12 @@ const InputAddress = () => {
                 address: placeDetails.name,
                 summary: summary,
             };
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/bites`, {
+            const response = await fetch(`${process.env.POSTGRES_URL}/bites`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),
             });
-            console.log(`env var : ${process.env.REACT_APP_API_URL}`);
+            console.log(`env var : ${process.env.POSTGRES_URL}`);
             console.log(response);
             setShowSummary(true); // Show summary after successful search
             setKey((prevKey) => prevKey + 1); // Update key to force remount or update ShowSummary

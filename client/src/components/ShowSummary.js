@@ -8,7 +8,7 @@ const ShowSummary = ({ placeDetails }) => {
     useEffect(() => {
         const fetchLatestBite = async () => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_API_URL}/bites/latest`);
+                const response = await fetch(`${process.env.POSTGRES_URL}/bites/latest`);
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
                 }
