@@ -1,11 +1,11 @@
-/*require('dotenv').config();
+require('dotenv').config();
 const { Pool } = require('pg');
 
 // Log environment variables to debug
 console.log('POSTGRES_URL:', process.env.REACT_APP_POSTGRES_URL);
 
 const pool = new Pool({
-  connectionString: process.env.REACT_APP_POSTGRES_URL
+  connectionString: "postgres://default:BSRwY4ZIF2Px@ep-crimson-frost-a1i93kjl-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require?sslmode=require" // process.env.REACT_APP_POSTGRES_URL
 });
 
 pool.on('error', (err) => {
@@ -21,14 +21,5 @@ pool.connect((err, client, done) => {
     done(); // release the client back to the pool
   }
 });
-
-module.exports = pool;
-*/
-const { Pool } = require('pg')
-require('dotenv').config()
-
-const pool = new Pool({
-  connectionString: "postgres://default:BSRwY4ZIF2Px@ep-crimson-frost-a1i93kjl-pooler.ap-southeast-1.aws.neon.tech:5432/verceldb?sslmode=require?sslmode=require",
-})
 
 module.exports = pool;
