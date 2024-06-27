@@ -1,4 +1,4 @@
-require('./dotenv').config();
+require('dotenv').config();
 const express = require("express"); // Get the library
 const app = express(); // make the app run express
 const cors = require("cors"); // lets front end make requests to back end
