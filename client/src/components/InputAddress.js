@@ -64,7 +64,7 @@ const InputAddress = () => {
                 address: placeDetails.name,
                 summary: summary,
             };
-            const response = await fetch(`${process.env.POSTGRES_URL}/bites`, {
+            const response = await fetch(`${process.env.POSTGRES_URL}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),
