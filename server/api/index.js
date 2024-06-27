@@ -12,7 +12,7 @@ app.use(express.json());
 
 // send in an address
 
-app.post("/bites", async(req, res) => {
+app.post(`${process.env.REACT_APP_BACKEND_URL}/bites`, async(req, res) => {
     try {
         
         //console.log(req.body);
@@ -53,7 +53,7 @@ app.get("/bites/:id", async(req,res) => {
     // Assuming you have already set up your pool and required dependencies
 
     // Get the latest bite entry
-    app.get("/bites/latest", async (req, res) => {
+    app.get(`${process.env.REACT_APP_BACKEND_URL}/bites/latest`, async (req, res) => {
         try {
         const latestBite = await pool.query(
             "SELECT * FROM bite ORDER BY bite_id DESC LIMIT 1"
@@ -67,8 +67,13 @@ app.get("/bites/:id", async(req,res) => {
   
 
 // set the port from environment variable or default to 5000
-const port = process.env.REACT_APP_PORT || 5000;
+/*const port = process.env.REACT_APP_PORT || 5000;
 
 app.listen(port, () => {
     console.log("server has started on port "+ port.toString());
+});
+*/
+
+app.listen(() => {
+    console.log("Server has started.");
 });
