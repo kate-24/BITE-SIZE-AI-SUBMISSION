@@ -14,7 +14,7 @@ app.use(express.json());
 
 console.log(`backend url: ${process.env.REACT_APP_BACKEND_URL}`)
 
-app.post(`${process.env.REACT_APP_BACKEND_URL}/bites`, async(req, res) => {
+app.post(`/bites`, async(req, res) => {
     try {
         
         //console.log(req.body);
@@ -37,7 +37,7 @@ app.post(`${process.env.REACT_APP_BACKEND_URL}/bites`, async(req, res) => {
     // Assuming you have already set up your pool and required dependencies
 
     // Get the latest bite entry
-    app.get(`${process.env.REACT_APP_BACKEND_URL}/bites/latest`, async (req, res) => {
+    app.get(`/bites/latest`, async (req, res) => {
         try {
         const latestBite = await pool.query(
             "SELECT * FROM bite ORDER BY bite_id DESC LIMIT 1"
