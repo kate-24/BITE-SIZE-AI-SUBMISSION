@@ -12,6 +12,8 @@ app.use(express.json());
 
 // send in an address
 
+console.log(`backend url: ${process.env.REACT_APP_BACKEND_URL}`)
+
 app.post(`${process.env.REACT_APP_BACKEND_URL}/bites`, async(req, res) => {
     try {
         
