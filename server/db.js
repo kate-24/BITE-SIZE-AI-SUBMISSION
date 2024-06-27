@@ -2,10 +2,10 @@ require('dotenv').config();
 const { Pool } = require('pg');
 
 // Log environment variables to debug
-console.log('POSTGRES_URL:', process.env.POSTGRES_URL);
+console.log('POSTGRES_URL:', process.env.REACT_APP_POSTGRES_URL);
 
 const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL,
+  connectionString: process.env.REACT_APP_POSTGRES_URL,
   ssl: {
     rejectUnauthorized: false
   }
