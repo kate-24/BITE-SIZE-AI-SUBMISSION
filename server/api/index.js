@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require("express"); // Get the library
 const app = express(); // make the app run express
 const cors = require("cors"); // lets front end make requests to back end
-const pool = require("./db"); // require the db.js file from parent folder
+const pool = require("../db"); // require the db.js file from parent folder
 
 // middleware
 app.use(cors());
