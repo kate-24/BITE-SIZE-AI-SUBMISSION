@@ -54,7 +54,7 @@ const InputAddress = () => {
             });
         });
     };
-
+    console.log(`From the input ," ${process.env.REACT_APP_POSTGRES_URL}`)
     const onSubmitForm = async (placeDetails) => {
         console.log("onSubmitForm called with placeDetails: ", placeDetails);
         try {
