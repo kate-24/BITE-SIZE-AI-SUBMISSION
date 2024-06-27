@@ -12,7 +12,7 @@ app.use(express.json());
 
 // send in an address
 
-app.post("/bites", async(req, res) => {
+app.post("/cars", async(req, res) => {
     try {
         
         //console.log(req.body);
