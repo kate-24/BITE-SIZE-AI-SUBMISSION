@@ -5,10 +5,7 @@ const { Pool } = require('pg');
 console.log('POSTGRES_URL:', process.env.REACT_APP_POSTGRES_URL);
 
 const pool = new Pool({
-  connectionString: process.env.REACT_APP_POSTGRES_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  connectionString: process.env.REACT_APP_POSTGRES_URL
 });
 
 pool.on('error', (err) => {
